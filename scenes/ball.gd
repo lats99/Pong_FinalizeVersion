@@ -28,6 +28,7 @@ func _physics_process(delta: float) -> void:
 		if collider == $"../Player" or collider == $"../CPU":
 			speed += ACCEL
 			dir = new_direction(collider)
+		# if ball hits the wall
 		else:
 			dir = dir.bounce(collision.get_normal())
 

@@ -111,9 +111,9 @@ shape = SubResource("RectangleShape2D_a6iag")
 position = Vector2(1184, 324)
 shape = SubResource("RectangleShape2D_a6iag")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="PauseLayer" type="CanvasLayer" parent="."]
 
-[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("6_1gkem")]
+[node name="PauseMenu" parent="PauseLayer" instance=ExtResource("6_1gkem")]
 
 [node name="Hud" type="CanvasLayer" parent="."]
 
