@@ -1,5 +1,9 @@
 extends CharacterBody2D
 
+@onready var sfx_pong_wall: AudioStreamPlayer = $"../SfxPongWall"
+@onready var sfx_pong_paddle: AudioStreamPlayer = $"../SfxPongPaddle"
+
+
 var win_size : Vector2
 const START_SPEED : int = 500
 const ACCEL : int = 50
@@ -28,9 +32,11 @@ func _physics_process(delta: float) -> void:
 		if collider == $"../Player" or collider == $"../CPU":
 			speed += ACCEL
 			dir = new_direction(collider)
+			sfx_pong_paddle.play()
 		# if ball hits the wall
 		else:
 			dir = dir.bounce(collision.get_normal())
+			sfx_pong_wall.play()
 
 func random_direction():
 	var new_dir := Vector2()
