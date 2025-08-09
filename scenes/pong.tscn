@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c15j4siq01eip"]
+[gd_scene load_steps=13 format=3 uid="uid://c15j4siq01eip"]
 
 [ext_resource type="Texture2D" uid="uid://cq7y6l812dlk0" path="res://assets/Bg.png" id="1_ik6sa"]
 [ext_resource type="Script" uid="uid://cionnywuae4w8" path="res://scenes/pong.gd" id="2_ploue"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://dfln6a6nl2qph" path="res://scenes/player.gd" id="3_ploue"]
 [ext_resource type="Script" uid="uid://dx4tcg1hf2s5y" path="res://scenes/cpu.gd" id="4_7aeas"]
 [ext_resource type="Script" uid="uid://bkgrpk565g6pp" path="res://scenes/ball.gd" id="4_60vo6"]
+[ext_resource type="PackedScene" uid="uid://bumfdi7h6lgix" path="res://scenes/pause_menu.tscn" id="6_1gkem"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m5tya"]
 size = Vector2(20, 120)
@@ -109,6 +110,10 @@ shape = SubResource("RectangleShape2D_a6iag")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ScoreRight"]
 position = Vector2(1184, 324)
 shape = SubResource("RectangleShape2D_a6iag")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("6_1gkem")]
 
 [node name="Hud" type="CanvasLayer" parent="."]
 
