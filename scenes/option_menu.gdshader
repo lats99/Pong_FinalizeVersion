@@ -13,6 +13,9 @@ void fragment() {
 	//// Called for every vertex the material is visible on.
 //}
 
+//void vertex() {
+	//// Called for every vertex the material is visible on.
+//}
 
 //void light() {
 //	// Called for every pixel for every light affecting the CanvasItem.

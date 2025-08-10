@@ -1,7 +1,9 @@
 extends Control
+@onready var option_layer: CanvasLayer = $"../../OptionLayer"
 
 func _ready() -> void:
 	$AnimationPlayer.play("RESET")
+	option_layer.visible = false
 
 func resume():
 	get_tree().paused = false
@@ -26,8 +28,7 @@ func _on_restart_pressed() -> void:
 
 
 func _on_option_pressed() -> void:
-	pass # Replace with function body.
-
+	option_layer.visible = true
 
 func _on_main_menu_pressed() -> void:
 	get_tree().paused = false

@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://qw0ttkiidgpl"]
+[gd_scene load_steps=5 format=3 uid="uid://qw0ttkiidgpl"]
 
 [ext_resource type="Script" uid="uid://dtrgma0y8a2sq" path="res://scenes/menu.gd" id="1_ouk20"]
 [ext_resource type="FontFile" uid="uid://cpjy8xrn06dk0" path="res://assets/pixel_font.ttf" id="2_mae5d"]
+[ext_resource type="PackedScene" uid="uid://dnavnf7u8pp3o" path="res://scenes/option_menu.tscn" id="3_con2f"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ouk20"]
 bg_color = Color(0.0509804, 0, 0.129412, 1)
@@ -38,23 +39,23 @@ offset_bottom = 132.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="MainMenu" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 9
 
-[node name="Play" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Play" type="Button" parent="MarginContainer/MainMenu"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_fonts/font = ExtResource("2_mae5d")
 text = "Play"
 
-[node name="Options" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Options" type="Button" parent="MarginContainer/MainMenu"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_fonts/font = ExtResource("2_mae5d")
 text = "Options"
 
-[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Quit" type="Button" parent="MarginContainer/MainMenu"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_fonts/font = ExtResource("2_mae5d")
@@ -74,6 +75,10 @@ theme_override_fonts/font = ExtResource("2_mae5d")
 theme_override_font_sizes/font_size = 50
 text = "PONG"
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[node name="Option" type="CanvasLayer" parent="."]
+
+[node name="OptionMenu" parent="Option" instance=ExtResource("3_con2f")]
+
+[connection signal="pressed" from="MarginContainer/MainMenu/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="MarginContainer/MainMenu/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="MarginContainer/MainMenu/Quit" to="." method="_on_quit_pressed"]

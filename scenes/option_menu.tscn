@@ -1,0 +1,144 @@
+[gd_scene load_steps=11 format=3 uid="uid://dnavnf7u8pp3o"]
+
+[ext_resource type="Script" uid="uid://dsjpcihu1ttkt" path="res://scenes/option_menu.gd" id="1_40sux"]
+[ext_resource type="FontFile" uid="uid://cpjy8xrn06dk0" path="res://assets/pixel_font.ttf" id="1_hecwe"]
+[ext_resource type="Shader" uid="uid://cboc0lttnxc2f" path="res://scenes/option_menu.gdshader" id="2_1xj3o"]
+[ext_resource type="Script" uid="uid://b188cr5h6vhbc" path="res://scenes/audio_control.gd" id="4_hrgik"]
+[ext_resource type="Script" uid="uid://dpnted4omtydb" path="res://scenes/fullscreen_control.gd" id="5_2mid4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hrgik"]
+shader = ExtResource("2_1xj3o")
+shader_parameter/lod = 0.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_40sux"]
+bg_color = Color(0.0509804, 0, 0.129412, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_1xj3o"]
+color = Color(1, 1, 1, 1)
+thickness = 6
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_hrgik"]
+color = Color(1, 0, 0, 1)
+thickness = 6
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_2mid4"]
+color = Color(0.972549, 0, 0, 1)
+thickness = 6
+
+[node name="OptionMenu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_40sux")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_hrgik")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -288.0
+offset_top = -150.0
+offset_right = 288.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="MarginContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_40sux")
+
+[node name="Option Label" type="Label" parent="MarginContainer/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -90.0
+offset_top = 8.0
+offset_right = 90.0
+offset_bottom = 38.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("1_hecwe")
+theme_override_font_sizes/font_size = 30
+text = "Option"
+
+[node name="VolumeLabel" type="Label" parent="MarginContainer/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -265.0
+offset_top = -74.0
+offset_right = -167.0
+offset_bottom = -53.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("1_hecwe")
+text = "Volume"
+
+[node name="AudioControl" type="HSlider" parent="MarginContainer/Panel"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+offset_left = 298.0
+offset_top = 79.0
+offset_right = 548.0
+offset_bottom = 95.0
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_styles/slider = SubResource("StyleBoxLine_1xj3o")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_hrgik")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_2mid4")
+max_value = 1.0
+step = 0.05
+value = 1.0
+script = ExtResource("4_hrgik")
+audio_bus_name = "SFX"
+
+[node name="XButton" type="Button" parent="MarginContainer/Panel"]
+layout_mode = 2
+offset_left = 543.0
+offset_right = 576.0
+offset_bottom = 33.0
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("1_hecwe")
+theme_override_font_sizes/font_size = 25
+text = "X"
+
+[node name="FullscreenControl" type="CheckButton" parent="MarginContainer/Panel"]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 125.0
+offset_right = 552.0
+offset_bottom = 172.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_hecwe")
+text = "Fullscreen"
+script = ExtResource("5_2mid4")
+
+[connection signal="value_changed" from="MarginContainer/Panel/AudioControl" to="MarginContainer/Panel/AudioControl" method="_on_value_changed"]
+[connection signal="pressed" from="MarginContainer/Panel/XButton" to="." method="_on_x_button_pressed"]
+[connection signal="toggled" from="MarginContainer/Panel/FullscreenControl" to="MarginContainer/Panel/FullscreenControl" method="_on_toggled"]
