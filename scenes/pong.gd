@@ -2,7 +2,7 @@ extends Sprite2D
 
 @onready var sfx_pong_score: AudioStreamPlayer = $SfxPongScore
 var score := [0,0] # Index 0 : Player, Index 1 : CPU
-const PADDLE_SPEED : int = 500
+var PADDLE_SPEED : int = 500
 
 func _on_ball_timer_timeout() -> void:
 	$Ball.new_ball()
