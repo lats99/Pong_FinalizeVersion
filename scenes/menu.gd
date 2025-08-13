@@ -12,3 +12,6 @@ func _on_options_pressed() -> void:
 
 func _on_quit_pressed() -> void:
 	get_tree().quit()
+
+func _on_option_menu_close() -> void:
+	option.hide()
