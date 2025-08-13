@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://bumfdi7h6lgix"]
+[gd_scene load_steps=9 format=3 uid="uid://bumfdi7h6lgix"]
 
 [ext_resource type="Script" uid="uid://5p0iyufd7ehv" path="res://scenes/pause_menu.gd" id="1_kukqi"]
 [ext_resource type="Shader" uid="uid://b74hdurs803yl" path="res://scenes/pause_menu.gdshader" id="1_myx47"]
 [ext_resource type="FontFile" uid="uid://cpjy8xrn06dk0" path="res://assets/pixel_font.ttf" id="1_n87rw"]
+[ext_resource type="PackedScene" uid="uid://dnavnf7u8pp3o" path="res://scenes/option_menu.tscn" id="4_5d2l8"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_myx47"]
 shader = ExtResource("1_myx47")
@@ -142,8 +143,14 @@ libraries = {
 &"": SubResource("AnimationLibrary_5d2l8")
 }
 
+[node name="Option" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="OptionMenu" parent="Option" instance=ExtResource("4_5d2l8")]
+
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Option" to="." method="_on_option_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/MainMenu" to="." method="_on_main_menu_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="close" from="Option/OptionMenu" to="." method="_on_option_menu_close"]

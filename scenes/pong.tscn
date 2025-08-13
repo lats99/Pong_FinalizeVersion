@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://c15j4siq01eip"]
+[gd_scene load_steps=16 format=3 uid="uid://c15j4siq01eip"]
 
 [ext_resource type="Texture2D" uid="uid://cq7y6l812dlk0" path="res://assets/Bg.png" id="1_ik6sa"]
 [ext_resource type="Script" uid="uid://cionnywuae4w8" path="res://scenes/pong.gd" id="2_ploue"]
@@ -8,7 +8,6 @@
 [ext_resource type="Script" uid="uid://bkgrpk565g6pp" path="res://scenes/ball.gd" id="4_60vo6"]
 [ext_resource type="PackedScene" uid="uid://bumfdi7h6lgix" path="res://scenes/pause_menu.tscn" id="6_1gkem"]
 [ext_resource type="AudioStream" uid="uid://c0pynmc0jtp61" path="res://assets/PongWall.wav" id="8_7q0or"]
-[ext_resource type="PackedScene" uid="uid://dnavnf7u8pp3o" path="res://scenes/option_menu.tscn" id="8_osehs"]
 [ext_resource type="AudioStream" uid="uid://cauf5k0utmipw" path="res://assets/PongPaddle.wav" id="9_me32k"]
 [ext_resource type="AudioStream" uid="uid://d2txn2dr3l4gx" path="res://assets/PongScore.wav" id="10_jjrnv"]
 
@@ -142,10 +141,6 @@ vertical_alignment = 1
 [node name="PauseLayer" type="CanvasLayer" parent="."]
 
 [node name="PauseMenu" parent="PauseLayer" instance=ExtResource("6_1gkem")]
-
-[node name="OptionLayer" type="CanvasLayer" parent="."]
-
-[node name="OptionMenu" parent="OptionLayer" instance=ExtResource("8_osehs")]
 
 [node name="BallTimer" type="Timer" parent="."]
 one_shot = true
